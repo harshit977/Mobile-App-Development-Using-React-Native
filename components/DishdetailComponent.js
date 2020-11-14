@@ -19,7 +19,7 @@ function RenderDish(props) {
                     <Icon 
                     raised
                     reverse
-                    name={props.favorite ? 'heart-o' : 'heart'} 
+                    name={props.favorite ? 'heart' : 'heart-o'} 
                     type='font-awesome' 
                     color='#f50' 
                     onPress={() => props.favorite ? console.log('Alerady Favorite'): props.onPress()} />
