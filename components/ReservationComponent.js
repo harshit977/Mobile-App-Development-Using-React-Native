@@ -70,7 +70,7 @@ class Reservation extends Component {
                     style={{flex: 2, marginRight: 20}}
                     date={this.state.date}
                     format=''
-                    mode="datetime"
+                    mode="date"
                     placeholder="select date and Time"
                     minDate="2017-01-01"
                     confirmBtnText="Confirm"
@@ -105,7 +105,7 @@ class Reservation extends Component {
                     <View style = {styles.modal}>
                         <Text style = {styles.modalTitle}>Your Reservation</Text>
                         <Text style = {styles.modalText}>Number of Guests: {this.state.guests}</Text>
-                        <Text style = {styles.modalText}>Smoking?: {this.state.smoking ? 'Yes' : 'No'}</Text>
+                        <Text style = {styles.modalText}>Smoking: {this.state.smoking ? 'Yes' : 'No'}</Text>
                         <Text style = {styles.modalText}>Date and Time: {this.state.date}</Text>
                         
                         <Button 
