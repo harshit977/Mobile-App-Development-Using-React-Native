@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Text, View,ScrollView,FlatList,Modal,StyleSheet } from 'react-native';
-import { Card, Icon } from 'react-native-elements';
+import { Text, View,ScrollView,FlatList,Modal,StyleSheet ,TextInput,TouchableOpacity} from 'react-native';
+import { Card, Icon ,Rating,AirbnbRating} from 'react-native-elements';
 import {connect } from 'react-redux';
 import {baseUrl} from '../shared/baseUrl';
 import { postFavorite } from '../redux/ActionCreators';
@@ -132,12 +132,16 @@ class Dishdetail extends Component {
                 onRequestClose={()=>{this.toggleModal();}}>
 
                  <View style={styles.modal}>
-                    
+                 <AirbnbRating
+                   count={5}
+                   reviews={["Bad","OK", "Good","Very Good","Amazing"]}
+                   defaultRating={2}
+                   size={20}
+                />
                     <Rating
-                    onFinishRating={(value)=>{this.setState({rating:value});this.printRating}}
+                    onFinishRating={(value)=>this.setState({rating: value})}
                        startingValue={1}
                         showRating
-                        onFinishRating={this.ratingCompleted}
                         style={{ paddingVertical: 10 }} />
 
                      <View style={styles.inputContainer}>
@@ -149,7 +153,7 @@ class Dishdetail extends Component {
                      />
                        <TextInput
                             onChangeText={(value)=>this.setState({author:value})}
-                            style={{height: 50,flex:1,left:-20}}
+                            style={{height: 50,flex:1,left: 10}}
                             placeholder="Author"
                          />
                      </View>
@@ -163,7 +167,7 @@ class Dishdetail extends Component {
                      />
                        <TextInput
                             onChangeText={(value)=>this.setState({comment:value})}
-                            style={{height: 50,flex:1,left:-20}}
+                            style={{height: 50,flex:1,left: 5}}
                             placeholder="Comment"
                         />
                      </View>
