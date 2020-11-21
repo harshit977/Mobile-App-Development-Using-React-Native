@@ -23,6 +23,8 @@ function RenderDish(props) {
 
     const dish = props.dish;
 
+    handleViewRef = ref => this.view.ref;
+
     const recogniseDrag = ({moveX,moveY,dx,dy}) => {
            if(dx < -200)   //right to left direction(distance travelled)
              return true;
@@ -33,6 +35,10 @@ function RenderDish(props) {
     const PanResponder=PanResponder.create({
          onStartShouldSetPanResponder: (e,gestureState) => {
              return true;
+         },
+         onPanResponderGrant: () => {
+             this.view.rubberBand(1000)
+             .then(endState => console.log(endState.finished ? 'finished' : 'cancelled'));
          },
          onPanResponderEnd: (e,gestureState) => {
              if (recogniseDrag(gestureState))
@@ -61,6 +67,7 @@ function RenderDish(props) {
         if (dish != null) {
             return(
                 <Animatable.View animation="fadeInDown" duration={4000} delay={1000}
+                 ref={this.handleViewRef}
                  {...PanResponder.panHandlers}>
                 <Card
                 featuredTitle={dish.name}
