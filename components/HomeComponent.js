@@ -52,19 +52,10 @@ function RenderItem(props) {
 
 class Home extends Component {
 
-    
-
     static navigationOptions = {
         title: 'Home'
     };
-
-   
-    
-    
-
     render() {
-
-       
 
         return(
             <ScrollView>
@@ -80,10 +71,7 @@ class Home extends Component {
               <RenderItem item={this.props.leaders.leaders.filter((leader) => leader.featured)[0]}isLoading={this.props.leaders.isLoading} errMess={this.props.leaders.errMess}/>
               </Animatable.View>
            
-            </ScrollView>
-
-              
-              
+            </ScrollView>              
         );
     }
 }
