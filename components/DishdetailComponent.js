@@ -23,25 +23,25 @@ function RenderDish(props) {
 
     const dish = props.dish;
 
-    handleViewRef = ref => this.view.ref;
-
-    const recogniseDrag = ({moveX,moveY,dx,dy}) => {
-           if(dx < -200)   //right to left direction(distance travelled)
+    const recogniseDragLeft = ({moveX,moveY,dx,dy}) => {
+        if(dx < -200)   //right to left direction(distance travelled)
              return true;
-           else
+        else
              return false;
     };
+    const recogniseDragRight = ({moveX,moveY,dx,dy}) => {
+        if(dx > 200)    //left to right direction(distance travelled)
+           return true;
+        else
+           return false;
+    };
 
-    const PanResponder=PanResponder.create({
+    const panResponder=PanResponder.create({
          onStartShouldSetPanResponder: (e,gestureState) => {
              return true;
          },
-         onPanResponderGrant: () => {
-             this.view.rubberBand(1000)
-             .then(endState => console.log(endState.finished ? 'finished' : 'cancelled'));
-         },
          onPanResponderEnd: (e,gestureState) => {
-             if (recogniseDrag(gestureState))
+             if (recogniseDragLeft(gestureState))
               {
                   Alert.alert(
                       'Add to favorites?',
@@ -54,21 +54,25 @@ function RenderDish(props) {
                          },
                          {
                               text: 'Ok',
-                              onPress: () => props.favorite ? console.log('Already Favorite'): props.onPress()
+                              onPress: () => {props.favorite ? console.log('Already Favorite'): props.onPress()}
                          }
                       ],
                       {cancelable: false}
                       )
               }
-             return true;
+              else if (recogniseDragRight(gestureState))
+              {
+                   props.onClick();
+              }
+              return true;
          }
+         
     });
     
         if (dish != null) {
             return(
-                <Animatable.View animation="fadeInDown" duration={4000} delay={1000}
-                 ref={this.handleViewRef}
-                 {...PanResponder.panHandlers}>
+                <Animatable.View animation="fadeInDown" duration={2000} delay={1000}
+                 {...panResponder.panHandlers}>
                 <Card
                 featuredTitle={dish.name}
                 image={{uri: baseUrl+ dish.image}}>
