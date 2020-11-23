@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet,Button,ScrollView,Image } from 'react-native';
+import { View, StyleSheet,Button,ScrollView,Image} from 'react-native';
 import { Card,Icon,Input,CheckBox} from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 import * as Permissions from 'expo-permissions';
@@ -9,7 +9,8 @@ import { baseUrl } from '../shared/baseUrl';
 
 class LoginTab extends Component {
 
-    constructor(props) {
+    constructor(props) 
+    {
         super(props);
         this.state = {
             username: '',
