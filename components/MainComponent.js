@@ -261,16 +261,17 @@ class Main extends Component {
     this.props.fetchComments();
     this.props.fetchPromos();
     this.props.fetchLeaders();
-
+  }
+/*
   NetInfo.getConnectionInfo() 
     .then((connectionInfo) => {
-      ToastAndroid.show('Initial Network Connectivity Type: '
+          ToastAndroid.show('Initial Network Connectivity Type: '
           + connectionInfo.type + ', effectiveType: ' + connectionInfo.effectiveType,
           ToastAndroid.LONG)
   });   
 
   NetInfo.addEventListener('connectionChange', this.handleConnectivityChange(connectionInfo));
-  
+
   }
 
 
@@ -296,7 +297,7 @@ class Main extends Component {
         break;
     }
   }
-
+*/
   render() {
  
     return (

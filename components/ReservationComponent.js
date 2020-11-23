@@ -4,6 +4,7 @@ import DatePicker from 'react-native-datepicker'
 import * as Animatable from 'react-native-animatable';
 import * as Permissions from 'expo-permissions';
 import * as Notifications from 'expo-notifications';
+import * as Calendar from 'expo-calendar';
 
 class Reservation extends Component {
 
@@ -36,8 +37,10 @@ class Reservation extends Component {
                },
                {
                     text: 'Ok',onPress: () =>{
-                         this.presentLocalNotification(this.state.date),
+                         this.presentLocalNotification(this.state.date);
+                         this.addReservationToCalendar(this.state.date);
                          this.resetForm();
+                            
                     }   
                }
             ],
@@ -81,7 +84,6 @@ class Reservation extends Component {
     }
     
     render() {
-        
         return(
             <View>
                 <Animatable.View animation="zoomIn" delay={1000} duration={5000}>

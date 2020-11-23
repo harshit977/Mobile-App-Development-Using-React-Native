@@ -138,7 +138,7 @@ class RegisterTab extends Component {
         if (cameraPermission.status === 'granted' && cameraRollPermission.status === 'granted') {
             let capturedImage = await ImagePicker.launchCameraAsync({
                 allowsEditing: true,
-                aspect: [4, 3],
+                aspect: [6, 8],
             });
             if (!capturedImage.cancelled) {
                 console.log(capturedImage);
@@ -146,6 +146,20 @@ class RegisterTab extends Component {
             }
         }
 
+    }
+
+    getImageFromGallery = async () => {
+        let galleryImage = await ImagePicker.launchImageLibraryAsync(
+            {
+                allowsEditing: true,
+                aspect: [6, 8] 
+            }
+        );
+        if (!galleryImage.cancelled)
+         {
+            console.log("Image Selected From Device Galery: "+galleryImage);
+            this.setState({imageUrl: galleryImage.uri });
+          }
     }
     
     static navigationOptions = {
@@ -179,7 +193,13 @@ class RegisterTab extends Component {
                         />
                     <Button
                         title="Camera"
+                        icon={require('./images/camera.png')}
                         onPress={this.getImageFromCamera}
+                        />
+                    <Button
+                        title="Gallery"
+                        icon={require('./images/camera.png')}
+                        onPress={this.getImageFromGallery}
                         />
                 </View>
                 <Input
@@ -199,7 +219,7 @@ class RegisterTab extends Component {
                 <Input
                     placeholder="First Name"
                     leftIcon={{ type: 'font-awesome', name: 'user-o' }}
-                    onChangeText={(lastname) => this.setState({firstname})}
+                    onChangeText={(firstname) => this.setState({firstname})}
                     value={this.state.firstname}
                     containerStyle={styles.formInput}
                     />
@@ -254,7 +274,8 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         flexDirection: 'row',
-        margin: 20
+        margin: 20,
+        justifyContent: "space-between"
     },
     image: {
       margin: 10,
