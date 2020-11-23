@@ -2,11 +2,17 @@
   "name": "confusion",
   "displayName": "confusion",
   "expo": {
+    "sdkVersion": "36.0.0",
     "name": "confusion",
+    "icon": "./icon.png",
     "slug": "confusion",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "ios": {
+      "bundleIdentifier": "net.food.confusion.confusion"
+    },
+    "android": {
+      "package": "net.food.confusion.confusion"
+    },
+    "description": "Restaurant App"
   }
 }
