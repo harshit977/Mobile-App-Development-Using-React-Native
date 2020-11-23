@@ -2,7 +2,6 @@
   "name": "confusion",
   "displayName": "confusion",
   "expo": {
-    "sdkVersion": "36.0.0",
     "name": "confusion",
     "icon": "./icon.png",
     "slug": "confusion",

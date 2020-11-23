@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet,Button } from 'react-native';
 import { Card,Icon,Input,CheckBox} from 'react-native-elements';
-import {SecureStore} from 'expo';
+import * as SecureStore from 'expo-secure-store';
 
 class Login extends Component {
 
@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
         margin: 20,
     },
     formInput: {
-        margin: 40
+        margin: 10
     },
     formCheckbox: {
-        margin: 40,
+        margin: 10,
         backgroundColor: null
     },
     formButton: {
